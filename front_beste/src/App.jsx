@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import MainPage from './components/MainPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className='app-container'>
+        {/* Navigation bar */}
+        <nav className='navbar'>
+          {/* Icon */}
+          <div className='nav-brend'>
+            <Link to = "/">Beste</Link>
+          </div>
+
+          <div className='nav-links'>
+            <Link to = '/' className = 'nav-link'>Recomendations</Link>
+            <Link to = '/' className = 'nav-link'>Genre</Link>
+            <Link to = '/' className = 'nav-link'>Authors</Link>
+            <Link to = '/' className = 'nav-link'>Log in</Link>
+            <Link to = '/' className = 'nav-link'>Reg on</Link>
+          </div>
+
+          <div className='content'>
+            <Routers>
+              <Route path = '/' element = {<MainPage />} />
+            </Routers>
+          </div>
+
+        </nav>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      <style jsx>{`
+        .app-container {
+          min-height: 100px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .navbar {
+          bacground-color: #2c7777
+          color:black;
+          display: flex;
+          justify-content: space-between;
+          aligh-items: center;
+          padding: 0 50px;
+          height: 70px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          position; realtive
+        }
+        `
+      }
+      </style>
+    </Router>
   )
 }
 
-export default App
+export default App;
